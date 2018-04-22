@@ -90,8 +90,14 @@ public class CMDClientAdaptor implements IClientAdaptor {
 		int bookNumber = -1;
 		do {
 			System.out.println("Please enter book number : ");
-
-			bookNumber = sc.nextInt();
+			
+			try {
+				bookNumber = Integer.parseInt(sc.next());
+			} catch(Exception e) {
+				System.out.println("Invalid input, please try again.");
+				continue;
+			}
+			
 			if (bookNumber > index && bookNumber <= 0)
 				throw new RuntimeException("Incorrect book number entered.");
 			else {
