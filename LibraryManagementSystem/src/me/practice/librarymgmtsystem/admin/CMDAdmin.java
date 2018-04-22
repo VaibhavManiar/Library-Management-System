@@ -18,7 +18,13 @@ public class CMDAdmin {
 				try {
 					System.out.println("Please enter 1 to add book.");
 					System.out.println("Please enter 2 to exit.");
-					int i = sc.nextInt();
+					int i = -1;
+					try {
+						i = Integer.parseInt(sc.next());
+					} catch(Exception e) {
+						System.out.println("Invalid input, please try again.");
+						continue;
+					}
 					switch (i) {
 					case 1:
 						admin.addBook(sc);
@@ -59,7 +65,14 @@ public class CMDAdmin {
 			System.out.println(index++ + ". " + type);
 		}
 		do {
-			index = sc.nextInt();
+			
+			try {
+				index = Integer.parseInt(sc.next());
+			} catch(Exception e) {
+				System.out.println("Invalid input, please try again.");
+				continue;
+			}
+			
 			if (index < 0 || index > bookTypes.size()) {
 				System.out.println("Invalid input, please enter correct index.");
 				continue;
@@ -80,7 +93,12 @@ public class CMDAdmin {
 			System.out.println(index++ + ". " + type);
 		}
 		do {
-			index = sc.nextInt();
+			try {
+				index = Integer.parseInt(sc.next());
+			} catch(Exception e) {
+				System.out.println("Invalid input, please try again.");
+				continue;
+			}
 			if (index < 0 || index > bookMediaTypes.size()) {
 				System.out.println("Invalid input, please enter correct index.");
 				continue;
