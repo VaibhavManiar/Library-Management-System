@@ -19,7 +19,15 @@ public class CMDClient {
 				try {
 					System.out.println("Please enter 1 to register.");
 					System.out.println("Please enter 2 to login.");
-					int i = sc.nextInt();
+					
+					int i = -1;
+					try {
+						i = Integer.parseInt(sc.next());
+					} catch(Exception e) {
+						System.out.println("Invalid input, please try again.");
+						continue;
+					}
+					
 					if (i == 1) {
 						client.currentLogedInUser = client.registerUser(sc, clientAdaptor);
 						break;
@@ -48,7 +56,13 @@ public class CMDClient {
 					System.out.println("Please enter 3 to lend book by author name.");
 					System.out.println("Please enter 4 to lend book by title.");
 					System.out.println("Please enter 5 to return book.");
-					i = sc.nextInt();
+					
+					try {
+						i = Integer.parseInt(sc.next());
+					} catch(Exception e) {
+						System.out.println("Invalid input, please try again.");
+						continue;
+					}
 					switch (i) {
 					case 1:
 						books = client.getBooksByAuthorName(sc, clientAdaptor);
