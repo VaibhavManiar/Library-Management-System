@@ -64,11 +64,13 @@ public class BookDao implements IBookDao {
 
 	@Override
 	public List<Book> searchBookByTitle(String title) {
+		repositoryService.resumeState();
 		return new ArrayList<>(repositoryService.bookRepository.bookMapByTitle.getOrDefault(title, new HashSet<>()));
 	}
 
 	@Override
 	public List<Book> searchBookByAuthor(String authorName) {
+		repositoryService.resumeState();
 		return new ArrayList<>(
 				repositoryService.bookRepository.bookMapByAuthor.getOrDefault(authorName, new HashSet<>()));
 	}
